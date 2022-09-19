@@ -1,0 +1,7 @@
+.expenses-container {
+    background-color: rgb(44, 44, 44);
+    padding: 10px 30px;
+    margin: 30px auto;
+    width: 60rem;
+    max-width: 90%;
+}
