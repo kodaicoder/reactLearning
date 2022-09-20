@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import PropTypes from "prop-types";
 import ExpenseDate from "../ExpenseDate/ExpenseDate";
-import Card from "../Card/Card";
+import Card from "../../UI/Card/Card";
 
 import "./ExpenseItem.css";
 
@@ -28,17 +28,19 @@ const ExpenseItem = (props) => {
   console.log("after set :" + title);
 
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={props.date} />
-      <div className="test-date ">
-        {props.date.toLocaleDateString("en-GB", dateOpt)}
-      </div>
-      <div className="expense-item__description">
-        <h2>{title}</h2>
-        <div className="expense-item__price">{props.amount}</div>
-      </div>
-      <button onClick={clickHandler}>Change Title</button>
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={props.date} />
+        <div className="test-date ">
+          {props.date.toLocaleDateString("en-GB", dateOpt)}
+        </div>
+        <div className="expense-item__description">
+          <h2>{title}</h2>
+          <div className="expense-item__price">{props.amount}</div>
+        </div>
+        <button onClick={clickHandler}>Change Title</button>
+      </Card>
+    </li>
   );
 };
 

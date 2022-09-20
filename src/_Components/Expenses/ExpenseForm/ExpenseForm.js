@@ -6,6 +6,7 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+
   const titleChangeHandler = (e) => {
     setEnteredTitle(e.target.value);
   };
@@ -42,7 +43,7 @@ const ExpenseForm = (props) => {
     e.preventDefault();
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
@@ -52,6 +53,11 @@ const ExpenseForm = (props) => {
     setEnteredTitle("");
     setEnteredAmount("");
     setEnteredDate("");
+    hideForm(e);
+  };
+
+  const hideForm = (e) => {
+    props.toggleForm(e);
   };
 
   return (
@@ -90,6 +96,9 @@ const ExpenseForm = (props) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button value={0} onClick={hideForm}>
+          Cancel
+        </button>
         <button type="submit">Add expense</button>
       </div>
     </form>

@@ -1,8 +1,9 @@
-import React from "react";
-import ExpensesContainer from "./_Components/ExpensesContainer/ExpensesContainer";
-import NewExpense from "./_Components/NewExpense/NewExpense";
+import React, { useState } from "react";
+import ExpensesContainer from "./_Components/Expenses/ExpensesContainer/ExpensesContainer";
+import NewExpense from "./_Components/Expenses/NewExpense/NewExpense";
 
-let expenses = [
+//#region expense_data
+let INITIAL_EXPENSES = [
   {
     id: "e1",
     title: "Toilet Paper",
@@ -35,22 +36,30 @@ let expenses = [
     date: new Date(2021, 9, 5),
   },
 ];
+//#endregion
 
-const App = () => (
-  <div>
-    <NewExpense addingExpense={addingExpenseHandler} />
-    <ExpensesContainer expenses={expenses} />
-  </div>
-);
+const App = () => {
+  const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
 
-const addingExpenseHandler = (newExpenseData) => {
-  console.log(
-    "%cthis data is coming from 'NewExpense'.(NewExpense >>> App)",
-    "background:rgb(0,0,0); color:rgb(0,255,0)"
+  const addingExpenseHandler = (newExpenseData) => {
+    console.log(
+      "%cthis new expense is coming from 'NewExpense'.(NewExpense >>> App)",
+      "background:rgb(0,0,0); color:rgb(0,255,0)"
+    );
+    console.log(newExpenseData);
+    // expenses = [...expenses, newExpenseData];
+    // console.log(expenses);
+    setExpenses((prevExpenses) => {
+      return [newExpenseData, ...prevExpenses];
+    });
+  };
+
+  return (
+    <div>
+      <NewExpense addingExpense={addingExpenseHandler} />
+      <ExpensesContainer expenses={expenses} />
+    </div>
   );
-  console.log(newExpenseData);
-  expenses = [...expenses, newExpenseData];
-  console.log(expenses);
 };
 
 export default App;
