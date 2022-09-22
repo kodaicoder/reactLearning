@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import NewUserForm from "./_components/Users/newUserForm/newUserForm";
@@ -13,18 +13,19 @@ function App() {
     });
   };
 
+  /////////////// <></> ก็คือ <React.Fragment></React.Fragment>
   if (usersList.length > 0) {
     return (
-      <div>
+      <>
         <NewUserForm addingUser={addingUserHandler} />
         <UsersList users={usersList} />
-      </div>
+      </>
     );
   } else {
     return (
-      <div>
+      <>
         <NewUserForm addingUser={addingUserHandler} />
-      </div>
+      </>
     );
   }
 }

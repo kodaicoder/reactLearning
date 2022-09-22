@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./input.module.css";
 
-const Input = (props) => {
+const Input = React.forwardRef((props, ref) => {
   const onChangeHandler = (e) => {
     props.onChange(e.target.value);
   };
@@ -16,11 +16,11 @@ const Input = (props) => {
         type={props.inputType}
         value={props.inputValue}
         aria-label={props.inputLabel}
-        onChange={onChangeHandler}
+        ref={ref}
       ></input>
     </div>
   );
-};
+});
 
 Input.propTypes = {};
 
