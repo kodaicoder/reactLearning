@@ -1,0 +1,25 @@
+.input-container {
+    margin-bottom: 10px;
+}
+
+.input-label {
+    font-weight: 600;
+}
+
+input {
+    height: 20px;
+    width: 400px;
+    margin: 5px 0;
+    background-color: white;
+    border: 1px solid rgba(62, 62, 62, .3);
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid #8b005d;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: #1a1a1a !important;
+    -webkit-background-clip: text;
+}
