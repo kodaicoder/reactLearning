@@ -1,9 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../../context/CartContext/CartContext";
 import { Modal } from "../../UI/Modal/Modal";
 import { CartItem } from "../CartItem/CartItem";
+import { Checkout } from "../Checkout/Checkout";
 import classes from "./cart.module.css";
+import axios from "axios";
 
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+const MySwal = withReactContent(Swal);
 ///hard code Cart items
 // const cartItems = (
 //   <ul className={classes["cart-items"]}>
@@ -18,6 +23,9 @@ import classes from "./cart.module.css";
 ////
 
 export const Cart = (props) => {
+  const [isCheckout, setIsCheckout] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const cartCtx = useContext(CartContext);
   const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`;
   const isHasItem = cartCtx.items.length > 0;
@@ -45,6 +53,60 @@ export const Cart = (props) => {
     </ul>
   );
 
+  const orderOnClickHandler = () => {
+    setIsCheckout(true);
+  };
+
+  const onCartCheckoutHandler = async (userData) => {
+    setIsSubmitting(true);
+
+    setTimeout(async () => {
+      await axios({
+        method: "POST",
+        url: "https://leaningreact-default-rtdb.asia-southeast1.firebasedatabase.app/orders.json",
+        data: {
+          userData,
+          orderedItems: cartCtx.items,
+        },
+      })
+        .then((res) => {
+          cartCtx.clearCart();
+          props.onHideCart();
+          setIsSubmitting(false);
+          MySwal.fire({
+            title: "Uploaded!",
+            text: "Your data has been upload successfully.",
+            icon: "success",
+          });
+        })
+        .catch((error) => {
+          let errorMessage = "Axios : Fail to fetch " + error.message;
+          if (error.response) {
+            errorMessage += " with code : " + error.response.status;
+          } else if (error.request) {
+            errorMessage += " with request : " + error.request;
+          } else {
+            console.log("Error", error.message);
+          }
+          MySwal.fire("Something went wrong!", errorMessage, "error");
+          setIsSubmitting(false);
+        });
+    }, 2000);
+  };
+
+  const modalActions = (
+    <div className={classes["actions"]}>
+      <button className={classes["button--alt"]} onClick={props.onHideCart}>
+        Close
+      </button>
+      {isHasItem && (
+        <button className={classes["button"]} onClick={orderOnClickHandler}>
+          Order
+        </button>
+      )}
+    </div>
+  );
+
   return (
     <Modal onHideCart={props.onHideCart}>
       {cartItems}
@@ -52,14 +114,14 @@ export const Cart = (props) => {
         <span>Total Amount</span>
         <span>{totalAmount}</span>
       </div>
-      <div className={classes["actions"]}>
-        <button className={classes["button--alt"]} onClick={props.onHideCart}>
-          Close
-        </button>
-        <button className={classes["button"]} hidden={!isHasItem}>
-          Order
-        </button>
-      </div>
+      {isHasItem && isCheckout && (
+        <Checkout
+          isSubmitting={isSubmitting}
+          submitCheckout={onCartCheckoutHandler}
+          onCancel={props.onHideCart}
+        />
+      )}
+      {!isCheckout && modalActions}
     </Modal>
   );
 };
