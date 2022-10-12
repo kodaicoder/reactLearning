@@ -1,0 +1,76 @@
+[debug] [2022-10-12T07:41:31.263Z] ----------------------------------------------------------------------
+[debug] [2022-10-12T07:41:31.264Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\nutde\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-10-12T07:41:31.265Z] CLI Version:   11.14.2
+[debug] [2022-10-12T07:41:31.265Z] Platform:      win32
+[debug] [2022-10-12T07:41:31.265Z] Node Version:  v16.17.0
+[debug] [2022-10-12T07:41:31.265Z] Time:          Wed Oct 12 2022 14:41:31 GMT+0700 (Indochina Time)
+[debug] [2022-10-12T07:41:31.266Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-12T07:41:31.270Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-12T07:41:31.270Z] > authorizing via signed-in user (nutdeknon@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Workspace\React_Learning\Section-21-deploy_and_optimize\Section-21-deploy_and_optimize
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2022-10-12T07:42:18.839Z] ----------------------------------------------------------------------
+[debug] [2022-10-12T07:42:18.841Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\nutde\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2022-10-12T07:42:18.841Z] CLI Version:   11.14.2
+[debug] [2022-10-12T07:42:18.841Z] Platform:      win32
+[debug] [2022-10-12T07:42:18.841Z] Node Version:  v16.17.0
+[debug] [2022-10-12T07:42:18.842Z] Time:          Wed Oct 12 2022 14:42:18 GMT+0700 (Indochina Time)
+[debug] [2022-10-12T07:42:18.842Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-12T07:42:18.848Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-12T07:42:18.848Z] > authorizing via signed-in user (nutdeknon@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Workspace\React_Learning\Section-21-deploy_and_optimize\Section-21-deploy_and_optimize
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-10-12T07:42:25.219Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2022-10-12T07:42:26.083Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2022-10-12T07:42:26.083Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project leaningreact (LeaningReact) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
